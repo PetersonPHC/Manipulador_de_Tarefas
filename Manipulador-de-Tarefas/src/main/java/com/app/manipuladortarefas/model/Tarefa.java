@@ -1,5 +1,7 @@
 package com.app.manipuladortarefas.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -64,4 +66,19 @@ public class Tarefa {
 		this.description = description;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    Tarefa tarefa = (Tarefa) o;
+	    return number == tarefa.number && 
+	           Objects.equals(type, tarefa.type) && 
+	           Objects.equals(description, tarefa.description);
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(number, type, description);
+	}
+
 }

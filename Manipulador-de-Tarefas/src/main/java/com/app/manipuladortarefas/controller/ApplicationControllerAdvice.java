@@ -34,7 +34,7 @@ public class ApplicationControllerAdvice {
 	
 	@ExceptionHandler(Throwable.class)
 	public ResponseEntity<String> handlerGenericException(Throwable unexpectedException){
-		String message = "Unexpected Exception, See the Logs";
+		String message = "Erro Inesperado, Veja os Logs da Aplicação para Compreender o Erro!";
 		logger.error(message, unexpectedException);
 		
 		return new ResponseEntity<String>(message, HttpStatus.INTERNAL_SERVER_ERROR);	

@@ -57,5 +57,11 @@ public class TarefasController {
 		Iterable<Tarefa> tarefasPorTipo = service.findAllTarefasForType(type);
 		return ResponseEntity.ok(tarefasPorTipo);
 	}
+	
+	// Endpoint de teste para forçar uma exceção genérica
+    @GetMapping("/force-error")
+    public ResponseEntity<Void> forceError() {
+        throw new RuntimeException("Simulando erro genérico");
+    }
 
 }

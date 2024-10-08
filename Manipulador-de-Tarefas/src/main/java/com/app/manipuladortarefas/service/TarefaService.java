@@ -52,7 +52,7 @@ public class TarefaService implements ITarefaService{
 	@Transactional
 	public Tarefa updateTarefaByNumber(int number, Tarefa tarefa) {
 		Optional<Tarefa> tarefaExistente = repository.findByNumber(number);
-		if(tarefaExistente.isEmpty()) {
+		if(tarefaExistente.isEmpty()) { 
 			throw new TarefaNotFoundException(number);
 		}
 		
@@ -85,15 +85,6 @@ public class TarefaService implements ITarefaService{
 	}
 
 	@Override
-	public Iterable<Tarefa> findAllTarefasForType(String type) {
-		List<Tarefa> tarefasPorTipo = repository.findByType(type);
-		if(tarefasPorTipo.isEmpty()) {
-			throw new TarefaNotFoundException(type);
-		}
-		return tarefasPorTipo;
-	}
-
-	@Override
 	public Iterable<Tarefa> findAllTarefas() {
 		List<Tarefa> listaDeTarefas = repository.findAll();
 		if(listaDeTarefas.isEmpty()) {
@@ -102,5 +93,13 @@ public class TarefaService implements ITarefaService{
 		return listaDeTarefas;
 	}
 	
+	@Override
+	public Iterable<Tarefa> findAllTarefasForType(String type) {
+		List<Tarefa> tarefasPorTipo = repository.findByType(type);
+		if(tarefasPorTipo.isEmpty()) {
+			throw new TarefaNotFoundException(type);
+		}
+		return tarefasPorTipo;
+	}
 
 }
